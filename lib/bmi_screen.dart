@@ -1,11 +1,6 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'dart:math';
-
 import 'package:first_project/BmiResultScreen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class BMIScreen extends StatefulWidget {
   static const String screenRoute = 'BMIScreen';
@@ -19,15 +14,15 @@ class BMIScreen extends StatefulWidget {
 class _BMIScreenState extends State<BMIScreen> {
   bool isMale = true;
   double height = 180;
-  int weight = 30;
-  int age = 10;
+  int weight = 80;
+  int age = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff0b0e21),
+      backgroundColor: const Color(0xff00011E),
       appBar: AppBar(
-        backgroundColor: Color(0xff0b0e21),
-        title: Text(
+        backgroundColor: const Color(0xff0b0e21),
+        title: const Text(
           "BMI CALCULATOR",
           style: TextStyle(color: Colors.white),
         ),
@@ -50,28 +45,32 @@ class _BMIScreenState extends State<BMIScreen> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: isMale ? Color(0xffd23457) : Color(0xff111427),
+                          color: isMale
+                              ? const Color.fromARGB(255, 213, 8, 18)
+                              : const Color(0xff111427),
                         ),
-                        height: 170,
-                        child: Column(
+                        height: 200,
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.male,
-                              size: 70,
+                              size: 90,
                               color: Colors.white,
                             ),
                             Text(
                               "MALE",
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.white38),
+                                fontSize: 33,
+                                color: Color.fromARGB(255, 85, 84, 84),
+                              ),
                             ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Expanded(
@@ -84,21 +83,25 @@ class _BMIScreenState extends State<BMIScreen> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: isMale ? Color(0xff111427) : Color(0xffd23457),
+                          color: isMale
+                              ? const Color(0xff111427)
+                              : const Color.fromARGB(255, 213, 8, 18),
                         ),
-                        height: 170,
-                        child: Column(
+                        height: 200,
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.female,
-                              size: 70,
+                              size: 90,
                               color: Colors.white,
                             ),
                             Text(
                               "FEMALE",
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.white38),
+                                fontSize: 33,
+                                color: Color.fromARGB(255, 85, 84, 84),
+                              ),
                             ),
                           ],
                         ),
@@ -116,15 +119,15 @@ class _BMIScreenState extends State<BMIScreen> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Color(0xff111427),
+                  color: const Color(0xff111427),
                 ),
                 height: 170,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "HEIGHT",
-                      style: TextStyle(color: Colors.white38, fontSize: 20),
+                      style: TextStyle(color: Colors.white38, fontSize: 30),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -133,16 +136,19 @@ class _BMIScreenState extends State<BMIScreen> {
                       children: [
                         Text(
                           "${height.round()}",
-                          style: TextStyle(color: Colors.white, fontSize: 50),
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 50,
+                              fontWeight: FontWeight.bold),
                         ),
-                        Text(
+                        const Text(
                           "cm",
-                          style: TextStyle(color: Colors.white38, fontSize: 20),
+                          style: TextStyle(color: Colors.white70, fontSize: 20),
                         ),
                       ],
                     ),
                     Slider(
-                      thumbColor: Color(0xffd93558),
+                      thumbColor: const Color.fromARGB(255, 213, 8, 18),
                       activeColor: Colors.white,
                       value: height.toDouble(),
                       min: 80,
@@ -167,19 +173,34 @@ class _BMIScreenState extends State<BMIScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff111427),
+                        color: const Color(0xff111427),
                       ),
-                      height: 170,
+                      height: 200,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Spacer(
+                            flex: 1,
+                          ),
+                          const Text(
                             "WETGHT",
-                            style: TextStyle(color: Colors.white38),
+                            style: TextStyle(
+                              color: Colors.white38,
+                              fontSize: 25,
+                            ),
+                          ),
+                          const Spacer(
+                            flex: 1,
                           ),
                           Text(
                             "$weight",
-                            style: TextStyle(color: Colors.white, fontSize: 50),
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 50,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const Spacer(
+                            flex: 1,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -191,8 +212,17 @@ class _BMIScreenState extends State<BMIScreen> {
                                     weight--;
                                   });
                                 },
-                                child: Icon(Icons.remove),
-                                mini: true,
+                                shape:
+                                    const CircleBorder(side: BorderSide.none),
+                                backgroundColor: const Color(0xff1B243E),
+                                child: const Icon(
+                                  Icons.remove,
+                                  color: Colors.white,
+                                  size: 35,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 20,
                               ),
                               FloatingActionButton(
                                 heroTag: "btn2",
@@ -201,36 +231,58 @@ class _BMIScreenState extends State<BMIScreen> {
                                     weight++;
                                   });
                                 },
-                                child: Icon(Icons.add),
-                                mini: true,
+                                shape:
+                                    const CircleBorder(side: BorderSide.none),
+                                backgroundColor: const Color(0xff1B243E),
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 35,
+                                ),
                               ),
                             ],
+                          ),
+                          const Spacer(
+                            flex: 1,
                           ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff111427),
+                        color: const Color(0xff111427),
                       ),
-                      height: 170,
+                      height: 200,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Spacer(
+                            flex: 1,
+                          ),
+                          const Text(
                             "AGE",
                             style:
-                                TextStyle(fontSize: 20, color: Colors.white38),
+                                TextStyle(fontSize: 25, color: Colors.white38),
+                          ),
+                          const Spacer(
+                            flex: 1,
                           ),
                           Text(
                             "$age",
-                            style: TextStyle(fontSize: 50, color: Colors.white),
+                            style: const TextStyle(
+                              fontSize: 50,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Spacer(
+                            flex: 1,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -242,8 +294,17 @@ class _BMIScreenState extends State<BMIScreen> {
                                     age--;
                                   });
                                 },
-                                child: Icon(Icons.remove),
-                                mini: true,
+                                shape:
+                                    const CircleBorder(side: BorderSide.none),
+                                backgroundColor: const Color(0xff1B243E),
+                                child: const Icon(
+                                  Icons.remove,
+                                  color: Colors.white,
+                                  size: 35,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 20,
                               ),
                               FloatingActionButton(
                                 heroTag: "btn4",
@@ -252,10 +313,19 @@ class _BMIScreenState extends State<BMIScreen> {
                                     age++;
                                   });
                                 },
-                                child: Icon(Icons.add),
-                                mini: true,
+                                shape:
+                                    const CircleBorder(side: BorderSide.none),
+                                backgroundColor: const Color(0xff1B243E),
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 35,
+                                ),
                               ),
                             ],
+                          ),
+                          const Spacer(
+                            flex: 1,
                           ),
                         ],
                       ),
@@ -268,24 +338,25 @@ class _BMIScreenState extends State<BMIScreen> {
           Container(
             width: double.infinity,
             height: 60,
-            color: Color(0xffd93558),
+            color: const Color.fromARGB(255, 213, 8, 18),
             child: MaterialButton(
               onPressed: () {
                 var result = weight / pow(height / 100, 2);
                 String gender;
                 isMale ? gender = 'Male' : gender = 'Female';
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Result(
-                        age: age,
-                        isMale: isMale,
-                        result: result,
-                        gender: gender,
-                        height: height,
-                        weight: weight,
-                      ),));
+                  builder: (context) => Result(
+                    age: age,
+                    isMale: isMale,
+                    result: result,
+                    gender: gender,
+                    height: height,
+                    weight: weight,
+                  ),
+                ));
                 // Get.to(() => Result());
               },
-              child: Text(
+              child: const Text(
                 "CALCULATE",
                 style: TextStyle(fontSize: 25, color: Colors.white),
               ),
